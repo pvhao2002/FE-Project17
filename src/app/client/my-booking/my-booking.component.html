@@ -1,0 +1,48 @@
+<div class="container-fluid">
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Tên dịch vụ</th>
+      <th scope="col">Ngày khám</th>
+      <th scope="col">Họ và tên</th>
+      <th scope="col">Email</th>
+      <th scope="col">Số điện thoại</th>
+      <th scope="col">Mô tả bệnh</th>
+      <th scope="col">Trạng thái</th>
+      <th scope="col">Thao tác</th>
+    </tr>
+    </thead>
+    <tbody>
+    <ng-container *ngIf="listMyBooking.length > 0; else noData">
+      <ng-container *ngFor="let item of listMyBooking">
+        <tr>
+          <th scope="row">{{item.id}}</th>
+          <td>{{item.service.serviceName}}</td>
+          <td>{{item.appointmentDate}}</td>
+          <td>{{item.fullName}}</td>
+          <td>{{item.email}}</td>
+          <td>{{item.phone}}</td>
+          <td>{{item?.description}}</td>
+          <td>{{item.status}}</td>
+          <td>
+            <ng-container *ngIf="item.status == 'pending'">
+              <button class="btn btn-primary" (click)="cancel(item.id)">Hủy lịch</button>
+            </ng-container>
+            <ng-container *ngIf="item.status != 'pending'">
+              {{item.status}}
+            </ng-container>
+          </td>
+        </tr>
+      </ng-container>
+    </ng-container>
+    </tbody>
+  </table>
+</div>
+
+
+<ng-template #noData>
+  <tr>
+    <td colspan="9" class="text-center">Không có dữ liệu</td>
+  </tr>
+</ng-template>

@@ -1,0 +1,53 @@
+<div class="row min-vh-80">
+  <div class="col-12">
+    <div class="card mt-4">
+      <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+        <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+          <h6 class="text-white text-capitalize ps-3">Chỉnh sửa thông tin dịch vụ</h6>
+          <p class="mb-0 text-white ps-3">Vui lòng nhập đầy đủ thông tin bên dưới
+          </p>
+        </div>
+      </div>
+      <div class="card-body px-5">
+
+        <div *ngIf="message && !status" class="alert alert-danger alert-dismissible fade show" role="alert">
+          <span class="alert-icon"><i class="ni ni-like-2"></i></span>
+          <span class="alert-text"><strong>Error!</strong> {{this.message}}!</span>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"
+                  (click)="message = ''">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+
+
+        <div *ngIf="status == 203" class="alert alert-danger alert-dismissible fade show" role="alert">
+          <span class="alert-icon"><i class="ni ni-like-2"></i></span>
+          <span class="alert-text"><strong>Error!</strong> {{this.message}}!</span>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"
+                  (click)="status = null">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <form [formGroup]="form" role="form" class="text-start" (ngSubmit)="submit()">
+          <div class="input-group input-group-outline my-3">
+            <label class="form-label">Tên dịch vụ</label>
+            <input type="text" [value]="form.get('serviceName')?.value" formControlName="serviceName"  name="serviceName" class="form-control" required>
+          </div>
+
+          <div class="input-group input-group-outline mb-3">
+            <label class="form-label">Mô tả</label>
+            <input type="text" [value]="form.get('description')?.value" formControlName="description" name="description" class="form-control" required>
+          </div>
+          <div class="input-group input-group-outline mb-3">
+            <label class="form-label">Hình ảnh</label>
+            <input type="text" [value]="form.get('image')?.value" formControlName="image" name="image" class="form-control" required>
+          </div>
+
+          <div class="text-center">
+            <button type="submit" class="btn bg-gradient-primary w-100 my-4 mb-2">Sửa</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

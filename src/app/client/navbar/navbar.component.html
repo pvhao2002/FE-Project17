@@ -1,0 +1,20 @@
+<nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 wow fadeIn" data-wow-delay="0.1s">
+  <a href="/" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+    <h1 class="m-0 text-primary"><i class="far fa-hospital me-3"></i>HealthCare</h1>
+  </a>
+  <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <div class="navbar-nav ms-auto p-4 p-lg-0">
+      <a href="/home" class="nav-item nav-link active">Trang chủ</a>
+      <a href="/list-service" class="nav-item nav-link">Dịch vụ</a>
+      <a href="/book-appointment" class="nav-item nav-link d-xl-none">Đặt lịch</a>
+      <a href="/login" class="nav-item nav-link" [ngClass]="{'d-none' : isLogin}">Đăng nhập</a>
+      <a href="/my-booking" class="nav-item nav-link" [ngClass]="{'d-none' : !isLogin}">Lịch sử khám bệnh</a>
+      <a href="/"  class="nav-item nav-link" [ngClass]="{'d-none' : !isLogin}" (click)="logout()">Đăng xuất</a>
+    </div>
+    <a href="/book-appointment" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Đặt lịch<i
+      class="fa fa-arrow-right ms-3"></i></a>
+  </div>
+</nav>

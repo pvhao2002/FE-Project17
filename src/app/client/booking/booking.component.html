@@ -1,0 +1,91 @@
+<div class="container-xxl py-5">
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+        <p class="d-inline-block border rounded-pill py-1 px-4">Đặt lịch</p>
+        <h1 class="mb-4">Đặt lịch hẹn đến thăm bác sĩ của chúng tôi</h1>
+        <div class="bg-light rounded d-flex align-items-center p-5 mb-4">
+          <div class="d-flex flex-shrink-0 align-items-center justify-content-center rounded-circle bg-white"
+               style="width: 55px; height: 55px;">
+            <i class="fa fa-phone-alt text-primary"></i>
+          </div>
+          <div class="ms-4">
+            <p class="mb-2">Hotline</p>
+            <h5 class="mb-0">+012 345 6789</h5>
+          </div>
+        </div>
+        <div class="bg-light rounded d-flex align-items-center p-5">
+          <div class="d-flex flex-shrink-0 align-items-center justify-content-center rounded-circle bg-white"
+               style="width: 55px; height: 55px;">
+            <i class="fa fa-envelope-open text-primary"></i>
+          </div>
+          <div class="ms-4">
+            <p class="mb-2">Gửi mail qua</p>
+            <h5 class="mb-0">healthy.care@example.com</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
+        <div class="bg-light rounded h-100 d-flex align-items-center p-5">
+          <form action="" method="">
+            <div class="row g-3">
+              <div class="col-12">
+                <h4 class="mb-4">Thông tin cá nhân</h4>
+              </div>
+              <div class="col-12 col-sm-12">
+                <label class="form-label">Họ và tên (*)</label>
+                <input type="text" class="form-control border-0" name="fullName" [(ngModel)]="formModel.fullName"
+                       placeholder="Họ và tên" required="required" style="height: 55px;">
+              </div>
+              <div class="col-12 col-sm-12">
+                <label class="form-label">Email</label>
+                <input type="email" name="email" [(ngModel)]="formModel.email" class="form-control border-0"
+                       placeholder="Email" required style="height: 55px;">
+              </div>
+              <div class="col-12 col-sm-6">
+                <label class="form-label">Số điện thoại (*)</label>
+                <input type="text" name="phone" [(ngModel)]="formModel.phone" class="form-control border-0"
+                       placeholder="Số điện thoại" required
+                       style="height: 55px;">
+              </div>
+              <ng-container *ngIf="listServices.length>0">
+                <div class="col-12 col-sm-6">
+                  <label class="form-label">Dịch vụ (*)</label>
+                  <section class="dropdown dropdown-dark">
+                    <select class="form-control text-dark border-0" [(ngModel)]="formModel.serviceId" name="serviceId"
+                            required style="height: 55px;">
+                      <option value="" disabled selected hidden>Chọn dịch vụ</option>
+                      <option *ngFor="let service of listServices" [value]="service.id">{{service.serviceName}}</option>
+                    </select>
+                  </section>
+                </div>
+              </ng-container>
+
+              <div class="col-12 col-sm-6">
+                <label class="form-label">Ngày đặt (*)</label>
+                <div class="date" id="appointmentDate" data-target-input="nearest" style="position: relative;">
+                  <input type="date"
+                         name="date"
+                         [(ngModel)]="formModel.appointmentDate"
+                         class="form-control border-0 datetimepicker-input"
+                         placeholder="Chọn ngày"
+                         required
+                         style="height: 55px;">
+                </div>
+              </div>
+              <div class="col-12">
+                <label class="form-label">Mô tả tình trạng bệnh</label>
+                <textarea class="form-control border-0" name="description" [(ngModel)]="formModel.description" rows="5"
+                          required
+                          placeholder="Mô tả tình trạng bệnh của bạn vào đây"></textarea>
+              </div>
+              <div class="col-12">
+                <input type="submit" class="btn btn-primary w-100 py-3" (click)="booking()" value="Đặt lịch">
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,49 @@
+<app-page-header *ngIf="showPageHeader"></app-page-header>
+<!-- Service Start -->
+
+<ng-container *ngIf="listServices.length > 0; else noData">
+  <div class="container-xxl py-5">
+    <div class="container">
+      <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+        <p class="d-inline-block border rounded-pill py-1 px-4">Dịch vụ</p>
+        <h1>Dịch vụ chăm sóc sức khỏe của HIU</h1>
+      </div>
+      <div class="row g-4">
+        <ng-container *ngFor="let item of listServices">
+          <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="service-item bg-light rounded h-100 p-5">
+              <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4"
+                   style="width: 65px; height: 65px;">
+                <!--                <i class="fa fa-heartbeat text-primary fs-4"></i>-->
+                <img [src]="item.image" alt="" style="width: 65px; height: 65px;">
+              </div>
+              <h4 class="mb-3">{{item.serviceName}}</h4>
+              <p class="mb-4">
+                {{item.description}}
+              </p>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+<!-- Service End -->
+
+
+<!--Template empty service-->
+<ng-template #noData>
+  <div class="container-xxl py-5">
+    <div class="container">
+      <!--      Message to notify there is no service-->
+      <span class="text-danger w-100">Hiện tại hệ thống đang bảo trì. Không có dịch vụ</span>
+    </div>
+  </div>
+</ng-template>
+
+
+
+
+
+

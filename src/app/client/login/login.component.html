@@ -1,0 +1,97 @@
+<div class="m-0 p-0 w-100 content">
+  <div class="form">
+    <ul class="tab-group">
+      <li class="tab active"><a href="#signup">Đăng ký</a></li>
+      <li class="tab"><a href="#login">Đăng nhập</a></li>
+    </ul>
+
+    <div class="tab-content">
+      <div id="signup">
+        <h1>Tạo tài khoản miễn phí</h1>
+
+        <form>
+
+          <div class="top-row">
+            <div class="field-wrap">
+              <label>
+                Tên đăng nhập<span class="req">*</span>
+              </label>
+              <input type="text" name="username" [(ngModel)]="formModel.username" required autocomplete="off"/>
+            </div>
+
+            <div class="field-wrap">
+              <label>
+                Mật khẩu<span class="req">*</span>
+              </label>
+              <input type="password" name="password" [(ngModel)]="formModel.password" required autocomplete="off"/>
+            </div>
+          </div>
+
+          <div class="field-wrap">
+            <label>
+              Email<span class="req">*</span>
+            </label>
+            <input type="email" [(ngModel)]="formModel.email" name="email" required autocomplete="off"/>
+          </div>
+
+          <div class="field-wrap">
+            <label>
+             Họ và tên<span class="req">*</span>
+            </label>
+            <input type="text" name="fullName" [(ngModel)]="formModel.fullName" required autocomplete="off"/>
+          </div>
+          <div class="field-wrap">
+            <label>
+              Số điện thoại<span class="req">*</span>
+            </label>
+            <input type="text" name="phone" [(ngModel)]="formModel.phone" required autocomplete="off"/>
+          </div>
+          <div class="field-wrap">
+            <label>
+              Địa chỉ<span class="req">*</span>
+            </label>
+            <input type="text" name="address" [(ngModel)]="formModel.address" required autocomplete="off"/>
+          </div>
+
+          <button type="submit"
+                  (click)="register()"
+                  class="button button-block">
+            Đăng ký
+          </button>
+
+        </form>
+
+      </div>
+
+      <div id="login">
+        <h1>Đăng nhập!</h1>
+
+        <form action="/" method="post">
+<!--          Message username or password invalid-->
+          <span class="text-danger fw-bold">{{this.message}}</span>
+          <div class="field-wrap">
+            <label>
+              Tên đăng nhập<span class="req">*</span>
+            </label>
+            <input type="text" [(ngModel)]="formModel.username" name="username" required autocomplete="off"/>
+          </div>
+
+          <div class="field-wrap">
+            <label>
+              Mật khẩu<span class="req">*</span>
+            </label>
+            <input type="password" [(ngModel)]="formModel.password" name="password" required autocomplete="off"/>
+          </div>
+
+          <button (click)="login()" class="button button-block">
+            Đăng nhập
+          </button>
+        </form>
+
+      </div>
+
+    </div><!-- tab-content -->
+
+  </div> <!-- /form -->
+
+</div>

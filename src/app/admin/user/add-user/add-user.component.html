@@ -1,0 +1,80 @@
+<div class="row min-vh-80">
+  <div class="col-12">
+    <div class="card mt-4">
+      <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+        <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+          <h6 class="text-white text-capitalize ps-3">Thêm mới nhân viên</h6>
+          <p class="mb-0 text-white ps-3">Vui lòng nhập đầy đủ thông tin bên dưới
+          </p>
+        </div>
+      </div>
+      <div class="card-body px-5">
+
+        <div *ngIf="message && !status" class="alert alert-danger alert-dismissible fade show" role="alert">
+          <span class="alert-icon"><i class="ni ni-like-2"></i></span>
+          <span class="alert-text"><strong>Error!</strong> {{this.message}}!</span>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"
+                  (click)="message = ''">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+
+
+        <!--       if status == 200 then notify success else notify error-->
+        <div *ngIf="status == 200" class="alert alert-success alert-dismissible fade show" role="alert">
+          <span class="alert-icon"><i class="ni ni-like-2"></i></span>
+          <span class="alert-text"><strong>Success!</strong>Thêm mới nhân viên thành công!</span>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"
+                  (click)="status = null">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+
+        <div *ngIf="status == 203" class="alert alert-danger alert-dismissible fade show" role="alert">
+          <span class="alert-icon"><i class="ni ni-like-2"></i></span>
+          <span class="alert-text"><strong>Error!</strong> {{this.message}}!</span>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"
+                  (click)="status = null">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <form #myForm="ngForm" role="form" class="text-start" (ngSubmit)="addUser(myForm)">
+          <div class="input-group input-group-outline my-3">
+            <label class="form-label">Tên đăng nhập</label>
+            <input type="text" [(ngModel)]="form.username" name="username" class="form-control" required>
+          </div>
+          <div class="input-group input-group-outline mb-3">
+            <label class="form-label">Mật khẩu</label>
+            <input type="password" [(ngModel)]="form.password" name="password" class="form-control" required>
+          </div>
+          <div class="input-group input-group-outline mb-3">
+            <label class="form-label">Họ và tên</label>
+            <input type="text" [(ngModel)]="form.fullName" name="fullName" class="form-control" required>
+          </div>
+          <div class="input-group input-group-outline mb-3">
+            <label class="form-label">Email</label>
+            <input type="email" [(ngModel)]="form.email" name="email" class="form-control" required>
+          </div>
+          <div class="input-group input-group-outline mb-3">
+            <label class="form-label">Số điện thoại</label>
+            <input type="tel" [(ngModel)]="form.phone" name="phone" class="form-control" pattern="^[0-9]{10}$" required>
+          </div>
+          <div class="input-group input-group-outline mb-3">
+            <label class="form-label">Địa chỉ</label>
+            <input type="text" [(ngModel)]="form.address" name="address" class="form-control" required>
+          </div>
+          <div class="input-group input-group-outline mb-3">
+            <select class="form-select" [(ngModel)]="form.roleId" name="roleId" required>
+              <option value="0" selected>Chọn quyền tài khoản</option>
+              <option value="1">Admin</option>
+              <option value="2">Nhân viên</option>
+            </select>
+          </div>
+          <div class="text-center">
+            <button type="submit" class="btn bg-gradient-primary w-100 my-4 mb-2">Thêm</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

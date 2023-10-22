@@ -1,0 +1,90 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card my-4">
+      <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+        <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3 d-flex justify-content-between">
+          <h6 class="text-white text-capitalize ps-3">Danh sách lịch đặt khám bệnh</h6>
+        </div>
+
+      </div>
+      <div class="card-body px-0 pb-2">
+        <div class="table-responsive p-0 overflow-scroll" style="height: 70vh;">
+          <table class="table align-items-center mb-0">
+            <thead>
+            <tr>
+              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tên khách hàng</th>
+              <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Ngày khám</th>
+              <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Dịch vụ</th>
+              <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Số điện
+                thoại
+              </th>
+              <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Email</th>
+              <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tình trạng
+                bệnh
+              </th>
+              <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Trạng thái
+              </th>
+              <th class="text-secondary opacity-7"></th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr *ngFor="let item of listAppointment">
+              <td>
+                <div class="d-flex px-2 py-1">
+                  <div>
+                    <img src="../assets/img/service.jpg" class="avatar avatar-sm me-3 border-radius-lg" alt="user1">
+                  </div>
+                  <div class="d-flex flex-column justify-content-center">
+                    <h6 class="mb-0 text-sm">{{item.fullName}}</h6>
+                  </div>
+                </div>
+              </td>
+              <td class="d-flex align-items-center justify-content-center">
+                <span class="text-secondary text-xs font-weight-bold">{{item.appointmentDate}}</span>
+              </td>
+              <td class="align-middle text-center">
+                <span class="text-secondary text-xs font-weight-bold text-wrap">{{item.service.serviceName}}
+                   </span>
+              </td>
+              <td class="align-middle text-center">
+                <span class="text-secondary text-xs font-weight-bold text-wrap">{{item.phone}}
+                   </span>
+              </td>
+              <td class="align-middle text-center">
+                <span class="text-secondary text-xs font-weight-bold text-wrap">{{item.email}}</span>
+              </td>
+              <td class="align-middle text-center">
+                <span class="text-secondary text-xs font-weight-bold text-wrap">{{item.description}} </span>
+              </td>
+              <td class="align-middle text-center">
+                <span class="text-secondary text-xs font-weight-bold text-wrap">{{item.status}}
+                  ...</span>
+              </td>
+              <td class="align-middle d-flex justify-content-evenly height-100 align-items-center">
+                <ng-container *ngIf="item.status == 'pending'">
+                  <button class="text-secondary border-0 bg-transparent font-weight-bold text-xs"
+                          data-toggle="tooltip"
+                          (click)="accept(item.id)"
+                          data-original-title="Edit user">
+                    <span class="badge badge-sm bg-gradient-success">Chấp nhận</span>
+                  </button>
+                  <button class="text-secondary border-0 bg-transparent font-weight-bold text-xs"
+                          data-toggle="tooltip"
+                          (click)="deny(item.id)"
+                          data-original-title="Edit user">
+                    <span class="badge badge-sm bg-gradient-warning">Từ chối</span>
+                  </button>
+                </ng-container>
+                <ng-container *ngIf="item.status != 'pending'">
+                  <span class="badge badge-sm" [ngClass]="classButton(item.status)">{{item.status}}</span>
+                </ng-container>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
